@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import allure
 from allure_commons.types import Severity
-from DIPLOM.poisk.pages.kinopoisk_page1 import KinopoiskPage
+from DIPLOM.API_test.pages.kinopoisk_page1 import KinopoiskPage
 
 
 @allure.epic("Тесты Кинопоиска")
