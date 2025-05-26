@@ -1,10 +1,10 @@
 import pytest
 import allure
 from allure_commons.types import Severity
-from DIPLOM.API_test.pages.kinopoisk_api import KinopoiskAPI  # Импортируем класс из вашей структуры проекта
+from pages.kinopoisk_api import KinopoiskAPI
 
 # Тестовые данные
-PERSON_ID = 64249  # Пример ID персоны
+PERSON_ID = 64249
 
 
 @allure.epic("Kinopoisk API Tests")
@@ -17,7 +17,7 @@ def test_get_person_by_id():
 
     with allure.step(f"Запрашиваем данные персоны с ID {PERSON_ID}"):
         response = api.get_person_by_id(PERSON_ID)
-        response_data = response.json()  # Получаем данные ответа напрямую
+        response_data = response.json()
 
     with allure.step("Проверяем статус код 200"):
         assert response.status_code == 200, \
@@ -37,7 +37,3 @@ def test_get_person_by_id():
             name="Professions List",
             attachment_type=allure.attachment_type.TEXT
         )
-
-
-if __name__ == "__main__":
-    pytest.main(["-v", "--alluredir=allure-results"])

@@ -1,9 +1,7 @@
-import pytest
 import allure
 from allure_commons.types import Severity
-from DIPLOM.API_test.pages.kinopoisk_api import KinopoiskAPI
+from pages.kinopoisk_api import KinopoiskAPI
 
-# Тестовые данные
 MOVIE_TITLE = "джентльмены удачи"
 
 
@@ -37,7 +35,3 @@ def test_search_movie_by_title():
             for movie in search_data["docs"]
         )
         assert found, f"Фильм '{MOVIE_TITLE}' не найден в результатах поиска"
-
-
-if __name__ == "__main__":
-    pytest.main(["-v", "--alluredir=allure-results"])

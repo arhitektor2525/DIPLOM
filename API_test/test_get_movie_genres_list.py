@@ -1,7 +1,6 @@
-import pytest
 import allure
 from allure_commons.types import Severity
-from DIPLOM.API_test.pages.kinopoisk_api import KinopoiskAPI
+from pages.kinopoisk_api import KinopoiskAPI
 
 
 @allure.epic("Kinopoisk API Tests")
@@ -40,7 +39,3 @@ def test_get_movie_genres_list():
                 name="Missing Genres Warning",
                 attachment_type=allure.attachment_type.TEXT
             )
-
-
-if __name__ == "__main__":
-    pytest.main(["-v", "--alluredir=allure-results"])

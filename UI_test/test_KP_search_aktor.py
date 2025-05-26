@@ -1,22 +1,14 @@
-import sys
-import os
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 import pytest
 import allure
 from allure_commons.types import Severity, AttachmentType
-
-# Добавляем путь к проекту
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from pages.kinopoisk_page import KinopoiskPage
 
 
 @pytest.fixture
 def driver():
     with allure.step("Инициализация Chrome драйвера"):
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        driver = webdriver.Chrome()
         driver.maximize_window()
         allure.attach(
             "Chrome драйвер успешно инициализирован",
@@ -105,5 +97,3 @@ def test_search_bruce_willis(driver):
         assert result, "Результаты по запросу 'Брюс Уиллис' не найдены!"
 
 
-if __name__ == "__main__":
-    pytest.main(["-v", "--alluredir=allure-results", os.path.abspath(__file__)])

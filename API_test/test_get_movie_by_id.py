@@ -1,10 +1,8 @@
-import pytest
 import allure
 from allure_commons.types import Severity
-from DIPLOM.API_test.pages.kinopoisk_api import KinopoiskAPI
+from pages.kinopoisk_api import KinopoiskAPI
 
-# Константы для тестов
-MOVIE_ID = 41519  # ID тестового фильма
+MOVIE_ID = 41519
 
 
 @allure.epic("Kinopoisk API Tests")
@@ -29,7 +27,3 @@ def test_get_movie_by_id():
             f"Ожидался ID фильма {MOVIE_ID}, но получен {movie_data.get('id')}"
         assert "name" in movie_data, "Ответ не содержит поле 'name'"
         assert "year" in movie_data, "Ответ не содержит поле 'year'"
-
-
-if __name__ == "__main__":
-    pytest.main(["-v", "--alluredir=allure-results"])

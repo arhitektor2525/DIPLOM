@@ -1,10 +1,9 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 import allure
 from allure_commons.types import Severity
-from DIPLOM.API_test.pages.kinopoisk_page1 import KinopoiskPage
+from pages.kinopoisk_page import KinopoiskPage
 
 
 @allure.epic("Тесты Кинопоиска")
@@ -14,7 +13,7 @@ class TestOnlineCinema:
     def driver(self):
         """Фикстура для инициализации браузера"""
         with allure.step("Инициализация браузера Chrome"):
-            service = Service(ChromeDriverManager().install())
+            service = Service()
             options = webdriver.ChromeOptions()
             options.add_argument("--start-maximized")
             driver = webdriver.Chrome(service=service, options=options)
@@ -83,7 +82,3 @@ class TestOnlineCinema:
             )
 
             assert is_loaded, error_message
-
-
-if __name__ == "__main__":
-    pytest.main(["-v", "test_online_cinema.py", "--alluredir=allure-results"])

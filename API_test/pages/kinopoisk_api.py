@@ -1,14 +1,12 @@
 import requests
 import allure
 import json
-from urllib.parse import quote
-from allure_commons.types import Severity
 from typing import Optional, Dict, Any
 
 
 class KinopoiskAPI:
     BASE_URL = "https://api.kinopoisk.dev"
-    API_KEY = "5BEMM39-R84M95R-K5JG6RJ-786NSJQ"  # Замените на реальный ключ
+    API_KEY = "5BEMM39-R84M95R-K5JG6RJ-786NSJQ"
 
     def __init__(self):
         self.headers = {
@@ -71,7 +69,6 @@ class KinopoiskAPI:
             attachment_type=allure.attachment_type.JSON
         )
 
-        # Добавляем скриншотный аттач (имитация)
         allure.attach(
             f"Response time: {response.elapsed.total_seconds()} seconds",
             name="Performance Info",
@@ -80,7 +77,6 @@ class KinopoiskAPI:
 
         return response_data
 
-    # Методы API с Allure-аннотациями
     @allure.step("Получение списка изображений (страница {page}, лимит {limit})")
     def get_images_list(self, page: int = 1, limit: int = 10) -> requests.Response:
         return self._send_request("GET", "/v1.4/image", {"page": page, "limit": limit})
