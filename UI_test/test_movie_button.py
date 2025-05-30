@@ -88,5 +88,3 @@ class TestMovieButton:
 
             assert url_check, \
                 f"Неверный URL после клика: {current_url}"
-
-
